@@ -1,0 +1,6 @@
+{
+  "name": "Terms & Conditions Risk Evaluator",
+  "description": "An intelligent full-stack app that analyzes Terms and Conditions to provide readable summaries, highlight key clauses, and calculate a comprehensive legal risk score.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
