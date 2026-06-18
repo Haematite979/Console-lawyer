@@ -18,26 +18,26 @@ export function DocSelector({ onSelect, selectedId }: DocSelectorProps) {
   const getRiskBadgeStyles = (risk: string) => {
     switch (risk) {
       case "Low":
-        return "bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-100";
+        return "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:bg-zinc-800";
       case "Medium":
-        return "bg-amber-50 text-amber-700 border-amber-100 hover:bg-amber-100";
+        return "bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700";
       case "High":
-        return "bg-orange-50 text-orange-700 border-orange-100 hover:bg-orange-100";
+        return "bg-zinc-200 text-black border-zinc-300 hover:bg-zinc-100";
       case "Critical":
-        return "bg-rose-50 text-rose-700 border-rose-100 hover:bg-rose-100";
+        return "bg-white text-black border-white font-extrabold shadow-[0_0_8px_rgba(255,255,255,0.15)] hover:bg-zinc-50";
       default:
-        return "bg-slate-50 text-slate-700 border-slate-100";
+        return "bg-zinc-900 text-zinc-400 border-zinc-800";
     }
   };
 
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono">
+      <div className="flex items-center justify-between mb-3 border-b border-zinc-900 pb-2">
+        <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400 font-mono">
           Interactive Presets
         </span>
-        <span className="text-[11px] text-slate-400">
-          Click to load realistic legal terms
+        <span className="text-[11px] text-zinc-500 font-mono">
+          PRESETS GATEWAY
         </span>
       </div>
       
@@ -52,19 +52,21 @@ export function DocSelector({ onSelect, selectedId }: DocSelectorProps) {
               type="button"
               className={`flex items-start p-3 rounded-xl border text-left cursor-pointer transition-all duration-200 group relative overflow-hidden ${
                 isSelected
-                  ? "bg-slate-900 border-slate-900 text-white shadow-sm ring-2 ring-slate-900/10"
-                  : "bg-white hover:bg-slate-50 border-slate-200/60 text-slate-700 shadow-xs hover:border-slate-300"
+                  ? "bg-white border-white text-black shadow-lg shadow-white/5"
+                  : "bg-zinc-900/40 hover:bg-zinc-900/80 border-zinc-800/80 text-zinc-300 hover:border-zinc-750"
               }`}
             >
               {/* Dynamic subtle hover background pulse */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-500/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
 
-              <div className="mr-3 mt-1 p-2 rounded-lg transition-colors duration-200 bg-slate-100 text-slate-600 group-hover:bg-slate-200/50 group-hover:text-slate-800 shrink-0">
+              <div className={`mr-3 mt-1 p-2 rounded-lg transition-colors duration-200 shrink-0 ${
+                isSelected 
+                  ? "bg-black text-white" 
+                  : "bg-zinc-800/80 text-zinc-400 group-hover:bg-zinc-700/80 group-hover:text-zinc-200"
+              }`}>
                 {renderIcon(
                   tpl.icon,
-                  `w-4 h-4 transition-transform duration-300 group-hover:scale-110 ${
-                    isSelected ? "text-slate-900 bg-white rounded-md p-0.5" : ""
-                  }`
+                  `w-4 h-4 transition-transform duration-300 group-hover:scale-110`
                 )}
               </div>
 
@@ -72,8 +74,8 @@ export function DocSelector({ onSelect, selectedId }: DocSelectorProps) {
                 <span className="block text-[13px] font-semibold truncate leading-snug">
                   {tpl.name.split(" (")[0]}
                 </span>
-                <span className="block text-[11px] text-slate-400 truncate mt-0.5">
-                  Analyze specific agreements snippet
+                <span className="block text-[11px] text-zinc-500 truncate mt-0.5 font-mono">
+                  RISK PRE-SET Snip
                 </span>
 
                 <span
@@ -81,7 +83,7 @@ export function DocSelector({ onSelect, selectedId }: DocSelectorProps) {
                     tpl.expectedRisk
                   )} ${isSelected ? "brightness-95 contrast-125" : ""}`}
                 >
-                  Est: {tpl.expectedRisk} Risk
+                  {tpl.expectedRisk} Risk
                 </span>
               </div>
             </button>

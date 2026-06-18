@@ -41,40 +41,41 @@ export function RiskMeter({ score, level, verdict }: RiskMeterProps) {
   }, [score]);
 
   // Map level to styling configurations
+  // Map level to styling configurations
   const styles = {
     Low: {
-      color: "text-emerald-500",
-      bg: "bg-emerald-50 text-emerald-700 border-emerald-200",
-      stroke: "stroke-emerald-500",
-      shadow: "shadow-emerald-100",
+      color: "text-zinc-500",
+      bg: "bg-zinc-900 text-zinc-400 border-zinc-800",
+      stroke: "stroke-zinc-500",
+      shadow: "shadow-none",
       description: "This document respects user privacy and displays exceptionally consumer-friendly, lightweight terms."
     },
     Medium: {
-      color: "text-amber-500",
-      bg: "bg-amber-50 text-amber-700 border-amber-200",
-      stroke: "stroke-amber-500",
-      shadow: "shadow-amber-100",
+      color: "text-zinc-400",
+      bg: "bg-zinc-800 text-zinc-300 border-zinc-700",
+      stroke: "stroke-zinc-400",
+      shadow: "shadow-none",
       description: "Standard industry practices. Some data tracking or advertising monetization, but standard dispute mechanisms exist."
     },
     High: {
-      color: "text-orange-500",
-      bg: "bg-orange-50 text-orange-700 border-orange-200",
-      stroke: "stroke-orange-500",
-      shadow: "shadow-orange-100",
+      color: "text-zinc-250",
+      bg: "bg-zinc-200 text-black border-zinc-300",
+      stroke: "stroke-zinc-350",
+      shadow: "shadow-none",
       description: "Severe exposure. Contains broad intellectual property grabs, mandatory binding arbitration, or subtle automatic recurring bill cycles."
     },
     Critical: {
-      color: "text-rose-600",
-      bg: "bg-rose-50 text-rose-700 border-rose-200",
-      stroke: "stroke-rose-600",
-      shadow: "shadow-rose-100",
+      color: "text-white font-extrabold",
+      bg: "bg-white text-black border-white shadow-[0_0_12px_rgba(255,255,255,0.15)]",
+      stroke: "stroke-white",
+      shadow: "shadow-none",
       description: "Extremely hostile clauses. Broad tracking of biometrics, unilateral terms revisions without prior consent, and complete waiver of basic rights."
     }
   }[level] || {
-    color: "text-gray-500",
-    bg: "bg-gray-50 text-gray-700 border-gray-200",
-    stroke: "stroke-gray-500",
-    shadow: "shadow-gray-100",
+    color: "text-zinc-550",
+    bg: "bg-zinc-900 text-zinc-400 border-zinc-800",
+    stroke: "stroke-zinc-650",
+    shadow: "shadow-none",
     description: "Unidentified risk factors."
   };
 
@@ -95,16 +96,16 @@ export function RiskMeter({ score, level, verdict }: RiskMeterProps) {
       initial={{ opacity: 0, y: 12, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-between h-full shadow-sm relative overflow-hidden group hover:shadow-md transition-all duration-300"
+      className="bg-zinc-900/40 border border-zinc-800/85 rounded-2xl p-6 flex flex-col items-center justify-between h-full shadow-lg relative overflow-hidden group hover:border-zinc-750 transition-all duration-300"
     >
       {/* Background Accent Grid */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full blur-3xl opacity-60 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+      <div className="absolute top-0 right-0 w-32 h-32 bg-zinc-900/10 rounded-full blur-3xl opacity-60 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
       
       <div className="w-full text-center">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono">
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 font-mono">
           Aggregate Legal Risk
         </h3>
-        <p className="text-2xl font-bold text-slate-800 tracking-tight mt-1">
+        <p className="text-2xl font-bold text-white tracking-tight mt-1">
           {level} Exposure
         </p>
       </div>
@@ -118,7 +119,7 @@ export function RiskMeter({ score, level, verdict }: RiskMeterProps) {
             cy="60"
             r={radius}
             fill="none"
-            className="stroke-slate-100"
+            className="stroke-zinc-800"
             strokeWidth={strokeWidth}
             strokeDasharray={circumference}
             strokeDashoffset={circumference * (120 / 360)} // Empty 120 degrees of the bottom
@@ -147,11 +148,11 @@ export function RiskMeter({ score, level, verdict }: RiskMeterProps) {
             initial={{ scale: 0.8, opacity: 0.5 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="text-4xl font-extrabold text-slate-800 tracking-tight font-sans"
+            className="text-4xl font-extrabold text-white tracking-tight font-sans"
           >
             {displayScore}
           </motion.span>
-          <span className="text-[10px] font-mono leading-none tracking-widest text-slate-400 uppercase mt-0.5">
+          <span className="text-[10px] font-mono leading-none tracking-widest text-zinc-500 uppercase mt-0.5">
             Risk Score
           </span>
         </div>
@@ -163,11 +164,11 @@ export function RiskMeter({ score, level, verdict }: RiskMeterProps) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold border ${styles.bg} mb-4 ${styles.shadow} shadow-sm transition-all duration-300`}
+          className={`inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold border ${styles.bg} mb-4 ${styles.shadow} shadow-sm transition-all duration-300`}
         >
           Verdict: {verdict}
         </motion.div>
-        <p className="text-xs text-slate-500 leading-relaxed max-w-sm mx-auto">
+        <p className="text-xs text-zinc-400 leading-relaxed max-w-sm mx-auto">
           {styles.description}
         </p>
       </div>
